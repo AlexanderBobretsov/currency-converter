@@ -33,53 +33,55 @@
         <tbody>
 
         <tr><td style="text-align: left;">
-            <select name="cur1" id="selectedCur1" ng-model="selectedCur1" class="form-control">
+           <select name="cur1" ng-model="selectedCur1" class="form-control" onchange="getCourse(value,'')">
                 <option value="">Из валюты</option>
-                <option ng-repeat="currency in currencyList" value="id:{{currency.id}}charcode:{{currency.charcode}}value:{{currency.value}}">{{currency.name}}&nbsp&nbsp&nbsp{{currency.charcode}}</option>
+                <option ng-repeat="currency1 in currencyList" value="{{currency1}}">{{currency1.name}}&nbsp&nbsp&nbsp{{currency1.charcode}}</option>
             </select>
         </td></tr>
         <tr><td style="text-align: left;">
-            <select name="cur2" id="selectedCur2" ng-model="selectedCur2" class="form-control">
+            <select name="cur2" ng-model="selectedCur2" class="form-control" onchange="getCourse('',value)">
                 <option value="">В валюту</option>
-                <option ng-repeat="currency in currencyList" value="id:{{currency.id}}charcode:{{currency.charcode}}value:{{currency.value}}">{{currency.name}}&nbsp&nbsp&nbsp{{currency.charcode}}</option>
+                <option ng-repeat="currency2 in currencyList" value="{{currency2}}">{{currency2.name}}&nbsp&nbsp&nbsp{{currency2.charcode}}</option>
             </select>
         </td></tr>
     <tr><td>
         <div class="input-group mb-3 mt-3">
-            <input ng-model="currency1_sum" type="text" class="form-control" placeholder="Введите сумму" aria-label="Введите сумму"
-                   aria-describedby="basic-addon2" onkeypress="validate()">
+            <input type="text" class="form-control" placeholder="Введите сумму" aria-label="Введите сумму"
+                   aria-describedby="basic-addon2" onkeypress="validate()"  onkeyup="getSumExchange(value)"  id="currency1_sum">
             <div class="input-group-append">
-                <button ng-click="create(currency1_sum,currency2_sum, currency1_charcode, currency2_charcode, date_exchange, status_exchange, course)" class="btn btn-primary" type="submit">Обменять</button>
+                <button ng-click="create()" class="btn btn-primary" type="submit">Обменять</button>
             </div>
         </div>
     </td></tr>
             <tr><td>
-                Текущий курс: 1 {{currency1_charcode = selectedCur1.slice(selectedCur1.indexOf("charcode:")+9,selectedCur1.indexOf("value:"))}} = {{course = selectedCur1.slice(selectedCur1.indexOf("value:")+6,selectedCur1.length).replace(",",".")/selectedCur2.slice(selectedCur2.indexOf("value:")+6,selectedCur2.length).replace(",",".")}} {{currency2_charcode = selectedCur2.slice(selectedCur2.indexOf("charcode:")+9,selectedCur2.indexOf("value:"))}}. В результате обмена Вы получите: {{currency2_sum = currency1_sum*course}} {{selectedCur2.slice(selectedCur2.indexOf("charcode:")+9,selectedCur2.indexOf("value:"))}}
+                Текущий курс: <data id="course_begin"></data> <data id="currency1_charcode"></data><data id="course"></data> <data id="currency2_charcode"></data><br>
+                В результате обмена Вы получите: <data id="currency2_sum"></data> <data id="currency22_charcode"></data>
             </td></tr>
     </table>
     <table class="table table-striped" style="font-size: 12px;">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Дата/Время обмена</th>
+            <th scope="col">Дата/ Время обмена</th>
             <th scope="col">Из валюты</th>
             <th scope="col">Сумма отправлена</th>
             <th scope="col">В валюту</th>
             <th scope="col">Сумма получена</th>
             <th scope="col">Курс обмена</th>
             <th scope="col">Статус</th>
+            <th scope="col">#</th>
         </tr>
         </thead>
         <tr ng-repeat="currencyhistory in currencyListHistory">
-            <th scope="row">{{currencyhistory.id}}</th>
-            <td>{{currencyhistory.dateExchange}}</td>
-            <td>{{currencyhistory.currency1Charcode}}</td>
-            <td>{{currencyhistory.currency1Sum}}</td>
-            <td>{{currencyhistory.currency2Charcode}}</td>
-            <td>{{currencyhistory.currency2Sum}}</td>
-            <td>{{currencyhistory.course}}</td>
-            <td>{{currencyhistory.statusExchange}}</td>
-            <td>
+            <th scope="row" class="striped">{{currencyhistory.id}}</th>
+            <td style="text-align: left;">{{currencyhistory.dateExchange}}</td>
+            <td style="text-align: left;">{{currencyhistory.currency1Charcode}}</td>
+            <td style="text-align: left;">{{currencyhistory.currency1Sum}}</td>
+            <td style="text-align: left;">{{currencyhistory.currency2Charcode}}</td>
+            <td style="text-align: left;">{{currencyhistory.currency2Sum}}</td>
+            <td style="text-align: left;">{{currencyhistory.course}}</td>
+            <td style="text-align: left;">{{currencyhistory.statusExchange}}</td>
+            <td style="text-align: left;">
                 <button ng-click="delete(currencyhistory)" type="submit" class="btn btn-outline-danger" style="font-size: 12px;">Удалить</button>
             </td>
         </tr>
