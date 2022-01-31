@@ -1,6 +1,5 @@
 package ru.bobretsoff.currencyconverterbackend.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bobretsoff.currencyconverterbackend.model.Currency;
 
@@ -13,11 +12,7 @@ public interface CurrencyService {
     void save(Currency currency);
     /** получение списка компаний. */
     List<Currency> getAllCurrencies();
-
-
+    /** удаление всех записей из таблицы Currency. */
     void delete();
-
-//    /** получение истории цен по тикеру. */
-//    List<CompanyProjection> getByTicker(String ticker);
 
 }

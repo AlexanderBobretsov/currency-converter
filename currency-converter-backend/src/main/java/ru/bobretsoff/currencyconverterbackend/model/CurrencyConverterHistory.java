@@ -7,104 +7,104 @@ import javax.persistence.*;
 @Data
 @Entity
 public class CurrencyConverterHistory {
-
+    /** поле для хранения идентификатора. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    /** поле для хранения charcode валюты1. */
     @Column
-    private String currency1_charcode;
-
+    private String currency1Charcode;
+    /** поле для хранения charcode валюты2. */
     @Column
-    private String currency2_charcode;
-
+    private String currency2Charcode;
+    /** поле для хранения курса конвертации. */
     @Column
     private String course;
-
+    /** поле для хранения суммы конвертации. */
     @Column
-    private String currency1_sum;
-
+    private String currency1Sum;
+    /** поле для хранения полученной суммы. */
     @Column
-    private String currency2_sum;
-
+    private String currency2Sum;
+    /** поле для хранения статуса обмена. */
     @Column
-    private String status_exchange;
-
+    private String statusExchange;
+    /** поле для хранения даты обмена. */
     @Column
-    private String date_exchange;
-
+    private String dateExchange;
+    /** конструктор. */
     public CurrencyConverterHistory() {
         this.id = id;
-        this.currency1_charcode = currency1_charcode;
-        this.currency2_charcode = currency2_charcode;
+        this.currency1Charcode = currency1Charcode;
+        this.currency2Charcode = currency2Charcode;
         this.course = course;
-        this.currency1_sum = currency1_sum;
-        this.currency2_sum = currency2_sum;
-        this.status_exchange = status_exchange;
-        this.date_exchange = date_exchange;
+        this.currency1Sum = currency1Sum;
+        this.currency2Sum = currency2Sum;
+        this.statusExchange = statusExchange;
+        this.dateExchange = dateExchange;
     }
-
+    /** геттеры-сеттеры. */
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
+    /** геттеры-сеттеры. */
+    public void setId(final Long id) {
         this.id = id;
     }
-
-    public String getCurrency1_charcode() {
-        return currency1_charcode;
+    /** геттеры-сеттеры. */
+    public String getCurrency1Charcode() {
+        return currency1Charcode;
     }
-
-    public void setCurrency1_charcode(String currency1_charcode) {
-        this.currency1_charcode = currency1_charcode;
+    /** геттеры-сеттеры. */
+    public void setCurrency1Charcode(final String currency1Charcode) {
+        this.currency1Charcode = currency1Charcode;
     }
-
-    public String getCurrency2_charcode() {
-        return currency2_charcode;
+    /** геттеры-сеттеры. */
+    public String getCurrency2Charcode() {
+        return currency2Charcode;
     }
-
-    public void setCurrency2_charcode(String currency2_charcode) {
-        this.currency2_charcode = currency2_charcode;
+    /** геттеры-сеттеры. */
+    public void setCurrency2Charcode(final String currency2Charcode) {
+        this.currency2Charcode = currency2Charcode;
     }
-
+    /** геттеры-сеттеры. */
     public String getCourse() {
         return course;
     }
-
-    public void setCourse(String course) {
+    /** геттеры-сеттеры. */
+    public void setCourse(final String course) {
         this.course = course;
     }
-
-    public String getCurrency1_sum() {
-        return currency1_sum;
+    /** геттеры-сеттеры. */
+    public String getCurrency1Sum() {
+        return currency1Sum;
     }
-
-    public void setCurrency1_sum(String currency1_sum) {
-        this.currency1_sum = currency1_sum;
+    /** геттеры-сеттеры. */
+    public void setCurrency1Sum(final String currency1Sum) {
+        this.currency1Sum = currency1Sum;
     }
-
-    public String getCurrency2_sum() {
-        return currency2_sum;
+    /** геттеры-сеттеры. */
+    public String getCurrency2Sum() {
+        return currency2Sum;
     }
-
-    public void setCurrency2_sum(String currency2_sum) {
-        this.currency2_sum = currency2_sum;
+    /** геттеры-сеттеры. */
+    public void setCurrency2Sum(final String currency2Sum) {
+        this.currency2Sum = currency2Sum;
     }
-
-    public String getStatus_exchange() {
-        return status_exchange;
+    /** геттеры-сеттеры. */
+    public String getStatusExchange() {
+        return statusExchange;
     }
-
-    public void setStatus_exchange(String status_exchange) {
-        this.status_exchange = status_exchange;
+    /** геттеры-сеттеры. */
+    public void setStatusExchange(final String statusExchange) {
+        this.statusExchange = statusExchange;
     }
-
-    public String getDate_exchange() {
-        return date_exchange;
+    /** геттеры-сеттеры. */
+    public String getDateExchange() {
+        return dateExchange;
     }
-
-    public void setDate_exchange(String date_exchange) {
-        this.date_exchange = date_exchange;
+    /** геттеры-сеттеры. */
+    public void setDateExchange(final String dateExchange) {
+        this.dateExchange = dateExchange;
     }
 }

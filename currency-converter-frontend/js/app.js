@@ -43,12 +43,12 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
         if (currency2_sum!=="") {
 
             $http.post("http://localhost:8080/api/v1/currency/history", {
-                'currency1_sum': currency1_sum,
-                'currency2_sum': currency2_sum,
-                'currency1_charcode': currency1_charcode,
-                'currency2_charcode': currency2_charcode,
-                'status_exchange': status_exchange,
-                'date_exchange': date_exchange,
+                'currency1Sum': currency1_sum,
+                'currency2Sum': currency2_sum,
+                'currency1Charcode': currency1_charcode,
+                'currency2Charcode': currency2_charcode,
+                'statusExchange': status_exchange,
+                'dateExchange': date_exchange,
                 'course': course
 
             })

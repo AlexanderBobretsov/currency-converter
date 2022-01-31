@@ -8,32 +8,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import ru.bobretsoff.currencyconverterbackend.model.Currency;
-import ru.bobretsoff.currencyconverterbackend.model.CurrencyConverterHistory;
-import ru.bobretsoff.currencyconverterbackend.service.CurrencyConverterHistoryService;
 import ru.bobretsoff.currencyconverterbackend.service.CurrencyService;
 
 import java.io.IOException;
 
 @Component
 public class Parser {
-
-
     /**
-     * автоматическая инъекция companyService.
+     * автоматическая инъекция CurrencyService, CurrencyConverterHistoryService.
      */
     private final CurrencyService currencyService;
-    private final CurrencyConverterHistoryService currencyConverterHistoryService;
-
+    /**
+     * инъекция зависимости.
+     */
     @Autowired
-    public Parser(CurrencyService currencyService, CurrencyConverterHistoryService currencyConverterHistoryService) {
+    public Parser(final CurrencyService currencyService) {
         this.currencyService = currencyService;
-        this.currencyConverterHistoryService = currencyConverterHistoryService;
     }
 
     /**
-     * выполнение кода по расписанию каждые 10 мин.
+     * выполнение кода при запуске приложения.
      */
-    @Scheduled(initialDelay = 50, fixedDelay=Long.MAX_VALUE)
+    @Scheduled(initialDelay = 50, fixedDelay = Long.MAX_VALUE)
     public void parseCompany() {
         String url = "http://www.cbr.ru/scripts/XML_daily.asp";
 
@@ -47,8 +43,10 @@ public class Parser {
 
             currencyService.delete();
 
-            for (int i = 0; i < doc.getAllElements().select("CharCode").size(); i++) {
-                Element chCode = doc.getAllElements().select("CharCode").get(i);
+            for (int i = 0;
+                 i < doc.getAllElements().select("CharCode").size(); i++) {
+                Element chCode =
+                        doc.getAllElements().select("CharCode").get(i);
                 Element name = doc.getAllElements().select("Name").get(i);
                 Element value = doc.getAllElements().select("Value").get(i);
 

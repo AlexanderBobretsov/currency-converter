@@ -1,6 +1,5 @@
 package ru.bobretsoff.currencyconverterbackend.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.bobretsoff.currencyconverterbackend.model.Currency;
@@ -40,7 +39,7 @@ public class CurrencyController {
     }
 
     /** обработчик Post-запроса /history. добавление информации в историю операций. */
-    @PostMapping(path = "/history",consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/history", consumes = "application/json", produces = "application/json")
     public CurrencyConverterHistory create(@RequestBody CurrencyConverterHistory currencyConverterHistory) {
        return currencyConverterHistoryService.create(currencyConverterHistory);
     }

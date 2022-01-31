@@ -31,10 +31,6 @@
 
         <table class="table table-striped">
         <tbody>
-<!--        <div style="text-align: center;">-->
-<!--        <div id="datedisplay"></div>-->
-<!--        <div id="timedisplay"></div>-->
-<!--        </div>-->
 
         <tr><td style="text-align: left;">
             <select name="cur1" id="selectedCur1" ng-model="selectedCur1" class="form-control">
@@ -76,13 +72,13 @@
         </thead>
         <tr ng-repeat="currencyhistory in currencyListHistory">
             <th scope="row">{{currencyhistory.id}}</th>
-            <td>{{currencyhistory.date_exchange}}</td>
-            <td>{{currencyhistory.currency1_charcode}}</td>
-            <td>{{currencyhistory.currency1_sum}}</td>
-            <td>{{currencyhistory.currency2_charcode}}</td>
-            <td>{{currencyhistory.currency2_sum}}</td>
+            <td>{{currencyhistory.dateExchange}}</td>
+            <td>{{currencyhistory.currency1Charcode}}</td>
+            <td>{{currencyhistory.currency1Sum}}</td>
+            <td>{{currencyhistory.currency2Charcode}}</td>
+            <td>{{currencyhistory.currency2Sum}}</td>
             <td>{{currencyhistory.course}}</td>
-            <td>{{currencyhistory.status_exchange}}</td>
+            <td>{{currencyhistory.statusExchange}}</td>
             <td>
                 <button ng-click="delete(currencyhistory)" type="submit" class="btn btn-outline-danger" style="font-size: 12px;">Удалить</button>
             </td>
