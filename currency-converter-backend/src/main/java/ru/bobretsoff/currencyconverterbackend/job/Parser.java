@@ -37,12 +37,6 @@ public class Parser {
     public void parseCompany() {
         String url = "http://www.cbr.ru/scripts/XML_daily.asp";
 
-//        Document doc1 = Jsoup.parse(new url.openStream(), "UTF-8", "", org.jsoup.parser.Parser.xmlParser());
-//        for (Element e : doc1.select("CharCode")) {
-//            System.out.println(e);
-//        }
-
-
         try {
             Document doc = Jsoup.connect(url)
                     .parser(org.jsoup.parser.Parser.xmlParser())
@@ -53,7 +47,7 @@ public class Parser {
 
             currencyService.delete();
 
-            for (int i = 0; i < doc.getAllElements().select("CharCode").stream().count(); i++) {
+            for (int i = 0; i < doc.getAllElements().select("CharCode").size(); i++) {
                 Element chCode = doc.getAllElements().select("CharCode").get(i);
                 Element name = doc.getAllElements().select("Name").get(i);
                 Element value = doc.getAllElements().select("Value").get(i);
@@ -69,17 +63,6 @@ public class Parser {
 
                 currencyService.save(currency);
 
-
-//                CurrencyConverterHistory obj = new CurrencyConverterHistory();
-//                obj.setCurrency1_charcode("1111111");
-//                obj.setCurrency2_charcode("2222222");
-//                obj.setCourse("333333");
-//                obj.setCurrency1_sum("44444444");
-//                obj.setCurrency2_sum("55555555");
-//                obj.setStatus_exchange("выполнено");
-//                obj.setDate_exchange("28.01.2022");
-//
-//                currencyConverterHistoryService.save(obj);
             }
         } catch (IOException e) {
             e.printStackTrace();

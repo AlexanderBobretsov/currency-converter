@@ -140,34 +140,3 @@ function validate(evt) {
 
     }
 }
-
-// CurrencyConverterApp.controller('CurrencyConverterHistoryController', function ($scope, $http) {
-//
-//     $http.get("http://localhost:8080/api/v1/currency_history/all")
-//         .then(resp => {
-//                 $scope.currencyListHistory = resp.data;
-//
-//                 console.log($scope.currencyListHistory);
-//             },
-//             resp => {
-//                 console.error(resp);
-//             });
-//
-//     $scope.name = '';
-//
-//     $scope.create = function (currency1_sum) {
-//
-//         // $http.post("http://localhost:8080/api/v1/currency_history", {'currency1_sum': currency1_sum})
-//         $http.post("http://localhost:8080/api/v1/currency_history", {"currency1_charcode:\'null\',currency2_charcode:\'null\',course:\'null\',currency1_sum:\'null\',currency2_sum:\'null\',status_exchange:\'null\',date_exchange":currency1_sum})
-//             .then(resp => {
-//                     $scope.currencyListHistory.push(resp.data);
-//                     console.log($scope.currencyListHistory);
-//
-//                 },
-//                 resp => {
-//                     console.error(resp);
-//                 });
-//
-//         $scope.name = '';
-//     }
-// }

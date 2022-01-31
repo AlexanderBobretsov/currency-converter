@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:63342")
 public class CurrencyController {
 
-    /** инъекция интерфейса CurrencyService.*/
+    /** инъекция интерфейсов CurrencyService, CurrencyConverterHistoryService.*/
     private final CurrencyService currencyService;
     private final CurrencyConverterHistoryService currencyConverterHistoryService;
 
@@ -27,23 +27,25 @@ public class CurrencyController {
     }
 
 
-    /** обработчик get-запроса /all. получение информации о текущих валютах и курсах */
+    /** обработчик get-запроса /all. получение информации о текущих валютах и курсах. */
     @GetMapping(path = "/all", produces = "application/json")
     public List<Currency> getAllCurrencies() {
         return currencyService.getAllCurrencies();
     }
 
-    /** обработчик get-запроса /all/history. получение информации об истории операций */
+    /** обработчик get-запроса /all/history. получение информации об истории операций. */
     @GetMapping(path = "/all/history", produces = "application/json")
     public List<CurrencyConverterHistory> getAllCurrencyConverterHistories() {
         return currencyConverterHistoryService.getAllCurrencyConverterHistories();
     }
 
+    /** обработчик Post-запроса /history. добавление информации в историю операций. */
     @PostMapping(path = "/history",consumes = "application/json", produces = "application/json")
     public CurrencyConverterHistory create(@RequestBody CurrencyConverterHistory currencyConverterHistory) {
        return currencyConverterHistoryService.create(currencyConverterHistory);
     }
 
+    /** обработчик delete-запроса /history. удаление информации из истории операций. */
     @DeleteMapping(path = "/history/{id}")
     public void delete(@PathVariable("id") long id) {
         currencyConverterHistoryService.delete(id);
