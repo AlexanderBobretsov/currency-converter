@@ -31,7 +31,6 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
     currency2_sum = '';
 
     $scope.currencyhistory = '';
-    $scope.currency_sum = null;
 
     $scope.create = function () {
 
@@ -60,7 +59,7 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
         }
 
-        document.getElementById('currency1_sum').value='';
+        Initial();
     }
 
     $scope.delete = function (currencyhistory) {
@@ -114,9 +113,7 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
         currentDateValue = day + "." + month + "." + year;
         currentTimeValue = hours + ':' + minutes + ':' + seconds;
-        // document.getElementById('datedisplay').innerHTML = "Сегодня: " + day + "." + month + "." + year;
-        // document.getElementById('timedisplay').innerHTML = "Текущее время: " + hours + ':' + minutes + ':' + seconds;
-    }
+   }
     setInterval(getDate, 0);
 
 
@@ -146,7 +143,7 @@ function getCourse(cur1,cur2) {
     // console.log(cur1);
     // console.log(cur2);
 
-    document.getElementById('currency1_sum').value='';
+    Initial();
 
 
     if (cur1!=="") {
@@ -165,7 +162,7 @@ function getCourse(cur1,cur2) {
         course = (parseFloat(val1.value)/parseFloat(val2.value)).toFixed(4);
         console.log(course);
         document.getElementById("course").innerHTML = course;
-        getSumExchange(currency1_sum);
+     //   getSumExchange(currency1_sum);
 
     }
 
@@ -177,4 +174,13 @@ function getSumExchange(cur_sum1) {
     currency2_sum =  (cur_sum1 * this.course).toFixed(4);
     console.log(currency2_sum);
     document.getElementById("currency2_sum").innerHTML = currency2_sum;
+}
+
+function Initial() {
+
+    currency1_sum='';
+    currency2_sum='';
+    document.getElementById('currency1_sum').value='';
+    document.getElementById("currency2_sum").innerHTML = '';
+
 }
