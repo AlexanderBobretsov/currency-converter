@@ -31,6 +31,7 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
     currency2_sum = '';
 
     $scope.currencyhistory = '';
+    $scope.currency_sum = null;
 
     $scope.create = function () {
 
@@ -56,8 +57,10 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
                         console.error(resp);
                     });
 
-            $scope.currency1_sum = '';
+
         }
+
+        document.getElementById('currency1_sum').value='';
     }
 
     $scope.delete = function (currencyhistory) {
@@ -142,6 +145,8 @@ function validate(evt) {
 function getCourse(cur1,cur2) {
     // console.log(cur1);
     // console.log(cur2);
+
+    document.getElementById('currency1_sum').value='';
 
 
     if (cur1!=="") {
