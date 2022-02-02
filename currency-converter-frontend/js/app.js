@@ -2,16 +2,23 @@ let CurrencyConverterApp = angular.module('CurrencyConverterApp', []);
 
 CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
+    // получение списка валют и их курса
     $http.get("http://localhost:8080/api/v1/currency/all")
         .then(resp => {
+
+            // if (currentDateValue!==resp.data.getValueFromName("valCursDate")) {
+            //
+            // }
                 $scope.currencyList = resp.data;
 
+                // console.log(resp.data.);
                 console.log($scope.currencyList);
             },
             resp => {
                 console.error(resp);
             });
 
+    // получение истории операций
     $http.get("http://localhost:8080/api/v1/currency/all/history")
          .then(resp => {
                  $scope.currencyListHistory = resp.data;
@@ -32,6 +39,7 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
     $scope.currencyhistory = '';
 
+    // сохранение операции в истории операции
     $scope.create = function () {
 
         if (currency2_sum!=='') {
@@ -61,26 +69,13 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
         Initial();
     }
-
+    // удаление информации из истории операций
     $scope.delete = function (currencyhistory) {
         $http.delete("http://localhost:8080/api/v1/currency/history/" + currencyhistory.id)
             .then(resp => {
                     let ix = $scope.currencyListHistory.map(currencyhistory => currencyhistory.id).indexOf(currencyhistory.id);
                     $scope.currencyListHistory.splice(ix, 1);
                     console.log($scope.currencyListHistory);
-
-                },
-                resp => {
-                    console.error(resp);
-                });
-    }
-
-    $scope.select = function (currency) {
-        $http.select("http://localhost:8080/api/v1/currency/" + currency.id)
-            .then(resp => {
-                    let ix = $scope.currencyList.map(currency => currency.id).indexOf(currency.id);
-                   // $scope.currencyList.splice(ix, 1);
-                    console.log(ix);
 
                 },
                 resp => {
@@ -138,13 +133,10 @@ function validate(evt) {
 }
 
 
-
+// функция получения текущего курса
 function getCourse(cur1,cur2) {
-    // console.log(cur1);
-    // console.log(cur2);
 
     Initial();
-
 
     if (cur1!=="") {
         val1 = JSON.parse(cur1);

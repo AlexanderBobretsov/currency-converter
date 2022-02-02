@@ -27,9 +27,9 @@ public class Parser {
     }
 
     /**
-     * выполнение кода при запуске приложения, а также каждый час.
+     * выполнение кода при запуске приложения.
      */
-    @Scheduled(initialDelay = 50, fixedDelay=3600000)
+    @Scheduled(initialDelay = 50,fixedDelay = Long.MAX_VALUE)
     public void parseCompany() {
         String url = "http://www.cbr.ru/scripts/XML_daily.asp";
 
@@ -49,19 +49,19 @@ public class Parser {
                         doc.getAllElements().select("CharCode").get(i);
                 Element name = doc.getAllElements().select("Name").get(i);
                 Element value = doc.getAllElements().select("Value").get(i);
-                Element valCursDate = doc.body();
+                Element valCursDate = doc.getAllElements().first();
 
                 String vChCode = chCode.ownText();
                 String vName = name.ownText();
                 String vValue = value.ownText();
-                String vValCurDate = valCursDate.text();
+                String vValCursDate = valCursDate.toString().substring(valCursDate.toString().indexOf("ValCurs Date=")+14,valCursDate.toString().indexOf("ValCurs Date=")+24);
 
-                System.out.println(vValCurDate);
 
                 Currency currency = new Currency();
                 currency.setCharcode(vChCode);
                 currency.setName(vName);
                 currency.setValue(vValue);
+                currency.setValCursDate(vValCursDate);
 
                 currencyService.save(currency);
 

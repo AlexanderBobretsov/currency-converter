@@ -22,12 +22,16 @@ public class Currency {
     /** поле для хранения value. */
     @Column
     private String value;
+    /** поле для хранения value. */
+    @Column
+    private String valCursDate;
     /** конструктор. */
     public Currency() {
         this.id = id;
         this.charcode = charcode;
         this.name = name;
         this.value = value;
+        this.valCursDate = valCursDate;
     }
     /** геттеры-сеттеры. */
     public Long getId() {
@@ -60,5 +64,13 @@ public class Currency {
     /** геттеры-сеттеры. */
     public void setValue(final String value) {
         this.value = value;
+    }
+    /** геттеры-сеттеры. */
+    public String getValCursDate() {
+        return valCursDate;
+    }
+    /** геттеры-сеттеры. */
+    public void setValCursDate(final String valCursDate) {
+        this.valCursDate = valCursDate;
     }
 }
