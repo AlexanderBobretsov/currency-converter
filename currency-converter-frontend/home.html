@@ -87,6 +87,34 @@
         </tr>
         </tbody>
     </table>
+    <div style="text-align: center;">
+        <table class="table table-striped" style="font-size: 16px; color: mintcream">
+            <thead>
+            <tr>
+                <th scope="col" bgcolor="#1e90ff">Статистика</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <table class="table table-striped" style="font-size: 12px;">
+        <thead>
+        <tr>
+            <th scope="col">Из валюты</th>
+            <th scope="col">В валюту</th>
+            <th scope="col">Всего отправлено</th>
+            <th scope="col">Всего получено</th>
+            <th scope="col">Средний курс обмена</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="historystat in HistoryStat">
+            <td style="text-align: left;">{{historystat.currency1Charcode}}</td>
+            <td style="text-align: left;">{{historystat.currency2Charcode}}</td>
+            <td style="text-align: left;">{{historystat.currency1Sum}}</td>
+            <td style="text-align: left;">{{historystat.currency2Sum}}</td>
+            <td style="text-align: left;">{{historystat.course}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <script src="js/app.js"></script>
