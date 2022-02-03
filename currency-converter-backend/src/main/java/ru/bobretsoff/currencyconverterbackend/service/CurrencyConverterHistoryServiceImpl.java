@@ -3,6 +3,7 @@ package ru.bobretsoff.currencyconverterbackend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.bobretsoff.currencyconverterbackend.model.CurrencyConverterHistory;
+import ru.bobretsoff.currencyconverterbackend.model.HistoryProjection;
 import ru.bobretsoff.currencyconverterbackend.repository.CurrencyConverterHistoryRepository;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class CurrencyConverterHistoryServiceImpl implements
     @Override
     public List<CurrencyConverterHistory> getAllCurrencyConverterHistories() {
         return repositoryHistory.findAll();
+    }
+    /**  Переопредление метода получения данных из истории.  */
+    @Override
+    public List<HistoryProjection> getStatistics() {
+        return repositoryHistory.findMyStatistics();
     }
     /**  Переопредление метода удаления данных из истории.  */
     @Override

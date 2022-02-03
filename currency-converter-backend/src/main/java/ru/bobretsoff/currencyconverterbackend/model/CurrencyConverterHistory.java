@@ -3,10 +3,11 @@ package ru.bobretsoff.currencyconverterbackend.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
-public class CurrencyConverterHistory {
+public class CurrencyConverterHistory implements Serializable{
     /** поле для хранения идентификатора. */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,13 +20,13 @@ public class CurrencyConverterHistory {
     private String currency2Charcode;
     /** поле для хранения курса конвертации. */
     @Column
-    private String course;
+    private float course;
     /** поле для хранения суммы конвертации. */
     @Column
-    private String currency1Sum;
+    private float currency1Sum;
     /** поле для хранения полученной суммы. */
     @Column
-    private String currency2Sum;
+    private float currency2Sum;
     /** поле для хранения статуса обмена. */
     @Column
     private String statusExchange;
@@ -68,27 +69,27 @@ public class CurrencyConverterHistory {
         this.currency2Charcode = currency2Charcode;
     }
     /** геттеры-сеттеры. */
-    public String getCourse() {
+    public float getCourse() {
         return course;
     }
     /** геттеры-сеттеры. */
-    public void setCourse(final String course) {
+    public void setCourse(final float course) {
         this.course = course;
     }
     /** геттеры-сеттеры. */
-    public String getCurrency1Sum() {
+    public float getCurrency1Sum() {
         return currency1Sum;
     }
     /** геттеры-сеттеры. */
-    public void setCurrency1Sum(final String currency1Sum) {
+    public void setCurrency1Sum(final float currency1Sum) {
         this.currency1Sum = currency1Sum;
     }
     /** геттеры-сеттеры. */
-    public String getCurrency2Sum() {
+    public float getCurrency2Sum() {
         return currency2Sum;
     }
     /** геттеры-сеттеры. */
-    public void setCurrency2Sum(final String currency2Sum) {
+    public void setCurrency2Sum(final float currency2Sum) {
         this.currency2Sum = currency2Sum;
     }
     /** геттеры-сеттеры. */

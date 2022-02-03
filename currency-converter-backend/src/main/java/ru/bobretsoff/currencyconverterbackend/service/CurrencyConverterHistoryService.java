@@ -2,6 +2,7 @@ package ru.bobretsoff.currencyconverterbackend.service;
 
 import org.springframework.stereotype.Service;
 import ru.bobretsoff.currencyconverterbackend.model.CurrencyConverterHistory;
+import ru.bobretsoff.currencyconverterbackend.model.HistoryProjection;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface CurrencyConverterHistoryService {
     void delete(long id);
     /** получение данных из истории операции CurrencyConverterHistory. */
     List<CurrencyConverterHistory> getAllCurrencyConverterHistories();
+    /** получение статистики. */
+    List<HistoryProjection> getStatistics();
 }

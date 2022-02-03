@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.bobretsoff.currencyconverterbackend.job.Parser;
 import ru.bobretsoff.currencyconverterbackend.model.Currency;
 import ru.bobretsoff.currencyconverterbackend.model.CurrencyConverterHistory;
+import ru.bobretsoff.currencyconverterbackend.model.HistoryProjection;
 import ru.bobretsoff.currencyconverterbackend.service.CurrencyConverterHistoryService;
 import ru.bobretsoff.currencyconverterbackend.service.CurrencyService;
 
@@ -41,6 +42,13 @@ public class CurrencyController {
     public List<CurrencyConverterHistory> getAllCurrencyConverterHistories() {
         return currencyConverterHistoryService.getAllCurrencyConverterHistories();
     }
+
+    /** обработчик get-запроса /all/history/stat. получение статистики конвертации. */
+    @GetMapping(path = "/all/history/stat", produces = "application/json")
+    public List<HistoryProjection> getStatistics() {
+        return currencyConverterHistoryService.getStatistics();
+    }
+
 
     /** обработчик Post-запроса /history. добавление информации в историю операций. */
     @PostMapping(path = "/history", consumes = "application/json", produces = "application/json")

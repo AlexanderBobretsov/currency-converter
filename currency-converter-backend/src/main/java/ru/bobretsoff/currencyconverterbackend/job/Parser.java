@@ -30,7 +30,7 @@ public class Parser {
     }
 
     /**
-     * выполнение кода при запуске приложения.
+     * выполнение парсинга при инициализации приложения.
      */
     @Scheduled(initialDelay = 50,fixedDelay = Long.MAX_VALUE)
     public void parseCurrency() {
