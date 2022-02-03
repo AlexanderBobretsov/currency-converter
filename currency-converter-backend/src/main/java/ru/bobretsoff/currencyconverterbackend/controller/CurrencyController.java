@@ -2,6 +2,7 @@ package ru.bobretsoff.currencyconverterbackend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.bobretsoff.currencyconverterbackend.job.Parser;
 import ru.bobretsoff.currencyconverterbackend.model.Currency;
 import ru.bobretsoff.currencyconverterbackend.model.CurrencyConverterHistory;
 import ru.bobretsoff.currencyconverterbackend.service.CurrencyConverterHistoryService;
@@ -17,18 +18,21 @@ public class CurrencyController {
     /** инъекция интерфейсов CurrencyService, CurrencyConverterHistoryService.*/
     private final CurrencyService currencyService;
     private final CurrencyConverterHistoryService currencyConverterHistoryService;
+    private final Parser parser;
 
     /** автоматическая инъекция зависимости.*/
     @Autowired
-    public CurrencyController(CurrencyService currencyService, CurrencyConverterHistoryService currencyConverterHistoryService) {
+    public CurrencyController(CurrencyService currencyService, CurrencyConverterHistoryService currencyConverterHistoryService, Parser parser) {
         this.currencyService = currencyService;
         this.currencyConverterHistoryService = currencyConverterHistoryService;
+        this.parser = parser;
     }
 
 
     /** обработчик get-запроса /all. получение информации о текущих валютах и курсах. */
     @GetMapping(path = "/all", produces = "application/json")
     public List<Currency> getAllCurrencies() {
+        parser.parseCurrency();
         return currencyService.getAllCurrencies();
     }
 

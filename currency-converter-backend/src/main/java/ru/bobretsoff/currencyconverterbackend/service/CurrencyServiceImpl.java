@@ -10,26 +10,28 @@ import java.util.List;
 @Service
 public class CurrencyServiceImpl implements CurrencyService {
 
-    /**  автоинъекция интерфейса repository.  */
+    /**  инъекция интерфейса repository.  */
     private final CurrencyRepository repository;
     /**  автоинъекция зависимости. */
     @Autowired
     public CurrencyServiceImpl(final CurrencyRepository repository) {
         this.repository = repository;
     }
+
+
     /**  переопредление метода сохранения данных в таблицу Currency.  */
     @Override
     public void save(final Currency currency) {
         repository.save(currency);
     }
-    /**  переопредление метода удаления данных из таблицы Currency.  */
+    /**  переопределение метода удаления данных из таблицы Currency.  */
     @Override
     public void delete() {
         repository.deleteAll();
     }
-    /**  переопредление метода получения данных из таблицы Currency.  */
+    /**  переопределение метода получения данных из таблицы Currency.  */
     @Override
     public List<Currency> getAllCurrencies() {
-        return repository.findAll();
+            return repository.findAll();
     }
 }
