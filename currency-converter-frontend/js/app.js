@@ -25,6 +25,17 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
                 console.error(resp);
              });
 
+    // получение статистики обмена
+    $http.get("http://localhost:8080/api/v1/currency/all/history/stat")
+        .then(resp => {
+                $scope.HistoryStat = resp.data;
+
+                console.log($scope.HistoryStat);
+            },
+            resp => {
+                console.error(resp);
+            });
+
 
     var currentDateValue='';
     var currentTimeValue='';
