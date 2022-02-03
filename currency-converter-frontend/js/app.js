@@ -6,12 +6,8 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
     $http.get("http://localhost:8080/api/v1/currency/all")
         .then(resp => {
 
-            // if (currentDateValue!==resp.data.getValueFromName("valCursDate")) {
-            //
-            // }
                 $scope.currencyList = resp.data;
 
-                // console.log(resp.data.);
                 console.log($scope.currencyList);
             },
             resp => {
@@ -114,7 +110,7 @@ CurrencyConverterApp.controller('CurrencyController', function ($scope, $http) {
 
 })
 
-
+// проверка на корректность ввода данных
 function validate(evt) {
 
     var theEvent = evt || window.event;
@@ -160,7 +156,7 @@ function getCourse(cur1,cur2) {
 
 }
 
-
+// функция получения суммы обмена
 function getSumExchange(cur_sum1) {
     currency1_sum = cur_sum1;
     currency2_sum =  (cur_sum1 * this.course).toFixed(4);
@@ -168,6 +164,8 @@ function getSumExchange(cur_sum1) {
     document.getElementById("currency2_sum").innerHTML = currency2_sum;
 }
 
+
+// обнуление позиций
 function Initial() {
 
     currency1_sum='';
