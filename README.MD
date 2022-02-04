@@ -17,6 +17,14 @@ HTML 5\CSS (плюс: Angular)
 
 Конвертер валют (Обменник by Alexander Bobretsov)
 
+Ссылки для теста приложения
+
+Фронтенд
+https://converter-bobretsoff-frontend.herokuapp.com/
+
+Бэкенд
+https://currency-converter-bobretsoff.herokuapp.com/
+
 Описание
 
 При запуске приложение получает список актуальных валют и их курсов с сайта ЦБРФ http://www.cbr.ru/scripts/XML_daily.asp (дополнительная информация https://cbr.ru/development/sxml/) и записывает их в базу данных (идентификаторы, коды, названия), а также курсы (привязанные к валюте) на дату запроса.
